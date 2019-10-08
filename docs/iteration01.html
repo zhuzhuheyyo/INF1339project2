@@ -1,10 +1,7 @@
 <html>
 <head>
     <style>
-        .test_class {border: black;
-                    color: red;
-                    width: 40px;
-                    height: 10px;}
+        .output {color: chartreuse;}
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
     <script>
@@ -20,6 +17,7 @@
     //gotDATA for now just announces itself 
         function gotData(data) {
         alert("FUNCTION GOTDATA WAS ACTIVATED")
+            document.getElementById("output").innerHTML = data.response.docs[0].headline.main
         }
     </script>
     
@@ -27,6 +25,7 @@
     </head>
 <body>
 <h1>New York Times API: articles from all time about rainbow </h1>
+    <p id = "output" class = "output"></p>
     
 </body>
 </html>
