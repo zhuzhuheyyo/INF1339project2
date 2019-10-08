@@ -1,0 +1,33 @@
+<html>
+<head>
+    <style>
+        .output {color: chartreuse;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script>
+        //STORE some data in "global" variables known to all functions
+        var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=rainbow&api-key=iGRJBxHl5BzZ4Cs6AjByeQ6lVpflBOxg";
+        var articleCount = 0
+            
+        function setup() {
+        noCanvas();
+            //SEND the URL and when the data comes back, run the function "gotData" 
+        loadJSON(url, gotData);
+        }
+    //gotDATA for now just announces itself 
+        function gotData(data) {
+        var text =''
+                for (i=0; i < data.response.docs.length; i++) 
+                {text = text + '<br />' + data.response.docs[i].headline.main}
+            document.getElementById("output").innerHTML = text
+        }
+    </script>
+    
+<title>Zhu INF1339 Project 2</title>
+    </head>
+<body>
+<h1>New York Times API: articles from all time about rainbow </h1>
+    <p id = "output" class = "output"></p>
+    
+</body>
+</html>
